@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Nurses Review Centre | AHPRA RN OSCE & NCLEX Prep</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Merriweather for Book Cover -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tone.js for Clinical Timer Audio Beeps -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0f2537',
+                            dark: '#091724',
+                            light: '#183852'
+                        },
+                        teal: {
+                            DEFAULT: '#1ba098',
+                            dark: '#147a74',
+                            light: '#7fd1c7',
+                            soft: '#eefaf8'
+                        },
+                        gold: {
+                            DEFAULT: '#d4a338',
+                            dark: '#b88924',
+                            light: '#f5e6c4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styling for 3D Book Mockup and subtle medical patterns */
+        .bg-medical-grid {
+            background-image: radial-gradient(rgba(27, 160, 152, 0.16) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .book-perspective {
+            perspective: 1200px;
+        }
+        
+        .book-card {
+            transform: rotateY(-12deg) rotateX(4deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+            box-shadow: 
+                -18px 20px 35px rgba(9, 23, 36, 0.45),
+                -6px 0 0 #091724,
+                -10px 0 0 #cbd5e1,
+                -12px 0 0 #0f2537;
+        }
+        
+        .book-card:hover {
+            transform: rotateY(-4deg) rotateX(1deg) translateY(-6px);
+            box-shadow: 
+                -22px 28px 45px rgba(9, 23, 36, 0.55),
+                -6px 0 0 #091724,
+                -10px 0 0 #e2e8f0,
+                -12px 0 0 #0f2537;
+        }
+
+        /* Custom Scrollbar for Station Tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(27, 160, 152, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(27, 160, 152, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(27, 160, 152, 0); }
+        }
+        .pulse-active {
+            animation: pulse-ring 2s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-teal selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-navy-dark text-slate-200 text-xs sm:text-sm py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-gold text-navy-dark font-bold px-2 py-0.5 rounded text-xs uppercase tracking-wider">New Edition</span>
+                <span>The <strong>AHPRA RN OSCE 10 Station Simplified Guide</strong> is now available for immediate digital & print access!</span>
+            </div>
+            <a href="#featured-guide" class="text-teal-light hover:text-white font-semibold underline underline-offset-4 transition flex items-center gap-1">
+                Preview the Guide <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-navy flex items-center justify-center text-white shadow-md group-hover:bg-teal transition-colors relative">
+                        <i class="fa-solid fa-user-nurse text-xl text-teal-light group-hover:text-white transition-colors"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-gold rounded-full flex items-center justify-center text-[9px] font-bold text-navy-dark">+</span>
+                    </div>
+                    <div>
+                        <span class="block text-lg sm:text-xl font-extrabold tracking-tight text-navy leading-none">
+                            NextGen <span class="text-teal">Nurses</span>
+                        </span>
+                        <span class="block text-[11px] font-semibold uppercase tracking-widest text-slate-500 mt-0.5">
+                            Review Centre Australia
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+                    <a href="#featured-guide" class="hover:text-teal transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-medical text-gold"></i> Featured Guide
+                    </a>
+                    <a href="#station-preview" class="hover:text-teal transition-colors">10 Stations Preview</a>
+                    <a href="#osce-simulator" class="hover:text-teal transition-colors flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-teal animate-ping"></span> Station Timer
+                    </a>
+                    <a href="#programs" class="hover:text-teal transition-colors">Programs & Pricing</a>
+                    <a href="#testimonials" class="hover:text-teal transition-colors">Success Stories</a>
+                    <a href="#faq" class="hover:text-teal transition-colors">FAQ</a>
+                </nav>
+
+                <!-- Desktop CTA -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="openModal('Self-Paced Simplified Guide ($79 AUD)')" class="px-4 py-2.5 rounded-xl text-sm font-bold text-navy bg-slate-100 hover:bg-slate-200 transition">
+                        Get the Guide
+                    </button>
+                    <button onclick="openModal('OSCE Comprehensive Online Review ($890 AUD)')" class="px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-teal hover:bg-teal-dark shadow-md shadow-teal/20 transition flex items-center gap-2">
+                        <span>Enroll Now</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-xl text-navy hover:bg-slate-100 focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
+            <a href="#featured-guide" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">Featured 10-Station Guide</a>
+            <a href="#station-preview" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">Interactive 10 Stations Preview</a>
+            <a href="#osce-simulator" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">Live OSCE Timer & Checklist</a>
+            <a href="#programs" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">Review Programs & Pricing</a>
+            <a href="#testimonials" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">IQN Success Stories</a>
+            <a href="#faq" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold text-navy hover:bg-teal-soft hover:text-teal">FAQ</a>
+            <div class="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
+                <button onclick="openModal('Self-Paced Simplified Guide ($79 AUD)')" class="w-full py-3 rounded-xl font-bold text-navy bg-gold hover:bg-gold-dark transition text-center">
+                    Get the Simplified Guide
+                </button>
+                <button onclick="openModal('OSCE Comprehensive Online Review ($890 AUD)')" class="w-full py-3 rounded-xl font-bold text-white bg-navy hover:bg-navy-light transition text-center">
+                    Enroll in Review Course
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-navy-dark via-navy to-[#123c4a] text-white overflow-hidden py-16 sm:py-24">
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 bg-medical-grid opacity-30 pointer-events-none"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-teal/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Hero Copy & CTAs -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wide text-teal-light uppercase">
+                            Tailored for Internationally Qualified Nurses (IQNs)
+                        </span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12]">
+                        Master the Australian Nursing Registration Exam with <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-light via-white to-gold">Confidence.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Stop overcomplicating your AHPRA RN OSCE & NCLEX preparation. NextGen Nurses Review Centre strips away the overwhelm and equips you with structured clinical frameworks, critical safety checkpoints, and verbatim communication scripts to pass on your first attempt.
+                    </p>
+
+                    <!-- Hero CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#featured-guide" class="w-full sm:w-auto px-7 py-4 rounded-xl font-bold text-navy-dark bg-gold hover:bg-gold-light transition shadow-lg shadow-gold/25 flex items-center justify-center gap-2.5 text-base">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Get the 10-Station Simplified Guide</span>
+                        </a>
+                        <a href="#programs" class="w-full sm:w-auto px-7 py-4 rounded-xl font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition flex items-center justify-center gap-2.5 text-base backdrop-blur-sm">
+                            <span>Explore Review Courses</span>
+                            <i class="fa-solid fa-arrow-right text-sm text-teal-light"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-teal/20 border border-teal/40 flex items-center justify-center text-teal-light shrink-0">
+                                <i class="fa-solid fa-list-check text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">10-Station Frameworks</div>
+                                <div class="text-xs text-slate-300">Clear step-by-step clinical flow</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-gold/20 border border-gold/40 flex items-center justify-center text-gold shrink-0">
+                                <i class="fa-solid fa-shield-heart text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Safety Checkpoints</div>
+                                <div class="text-xs text-slate-300">Zero red-flag clinical errors</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                            <div class="w-10 h-10 rounded-lg bg-teal/20 border border-teal/40 flex items-center justify-center text-teal-light shrink-0">
+                                <i class="fa-solid fa-comments text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Communication Scripts</div>
+                                <div class="text-xs text-slate-300">Australian therapeutic phrasing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Quick Clinical Readiness Card & Mini Book Badge -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="absolute -top-4 right-6 bg-teal text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                            <i class="fa-solid fa-star text-gold"></i> 96.4% First-Attempt Pass Rate
+                        </div>
+
+                        <div class="flex items-center gap-4 pb-6 border-b border-white/15">
+                            <div class="w-14 h-14 rounded-2xl bg-gold/20 border border-gold flex items-center justify-center text-gold text-2xl font-extrabold">
+                                10
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-white">The NextGen Clinical Formula</h2>
+                                <p class="text-xs sm:text-sm text-slate-300">How we turn anxious candidates into safe Australian RNs</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 my-6">
+                            <div class="flex items-start gap-3.5 bg-navy-dark/60 p-4 rounded-2xl border border-white/10">
+                                <span class="w-7 h-7 rounded-full bg-teal text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">01</span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">2-Minute Reading Phase Mastery</h3>
+                                    <p class="text-xs text-slate-300 mt-1">Learn how to decode the clinical stem, spot immediate priorities, and mentally map your 8-minute execution before the buzzer sounds.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3.5 bg-navy-dark/60 p-4 rounded-2xl border border-white/10">
+                                <span class="w-7 h-7 rounded-full bg-gold text-navy-dark font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">02</span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Non-Negotiable Safety Bundles</h3>
+                                    <p class="text-xs text-slate-300 mt-1">Never miss Hand Hygiene, 3-Point Patient ID, Allergy Verification, or Informed Consent under exam pressure.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3.5 bg-navy-dark/60 p-4 rounded-2xl border border-white/10">
+                                <span class="w-7 h-7 rounded-full bg-teal text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">03</span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Structured ISBAR & Documentation</h3>
+                                    <p class="text-xs text-slate-300 mt-1">Deliver crisp, high-scoring clinical handovers and complete Australian NIMC & ADDS charts accurately with time to spare.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="flex items-center -space-x-2">
+                                <span class="w-9 h-9 rounded-full bg-teal-dark border-2 border-navy flex items-center justify-center text-xs font-bold">RN</span>
+                                <span class="w-9 h-9 rounded-full bg-gold text-navy-dark border-2 border-navy flex items-center justify-center text-xs font-bold">IQN</span>
+                                <span class="w-9 h-9 rounded-full bg-slate-700 border-2 border-navy flex items-center justify-center text-xs font-bold">+2k</span>
+                                <span class="pl-4 text-xs text-slate-300 font-medium">2,400+ IQNs guided across Australia</span>
+                            </div>
+                            <a href="#station-preview" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+                                Try Interactive Demo <i class="fa-solid fa-arrow-down"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Resource Section: AHPRA RN OSCE 10 Station Simplified Guide -->
+    <section id="featured-guide" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column: Custom Visual Book Cover Mockup (Matching the exact cover design) -->
+                <div class="lg:col-span-5 flex justify-center book-perspective py-4">
+                    <!-- 3D Book Container -->
+                    <div class="book-card w-full max-w-[360px] rounded-r-2xl rounded-l-sm overflow-hidden border border-slate-700/60 select-none bg-gradient-to-b from-[#0b1f33] via-[#104754] to-[#166d6b] text-white relative">
+                        
+                        <!-- Book Spine Highlight -->
+                        <div class="absolute top-0 bottom-0 left-0 w-4 bg-gradient-to-r from-black/50 via-white/10 to-transparent z-20"></div>
+
+                        <!-- Top Header Section (Dark Navy) -->
+                        <div class="bg-[#0b1d30] pt-7 pb-6 px-6 text-center relative border-b border-white/10">
+                            <p class="text-[11px] font-extrabold tracking-[0.18em] uppercase text-gold">
+                                STUDY &amp; PREPARATION <span class="text-white">GUIDE</span>
+                            </p>
+                            <h3 class="mt-2 text-3xl sm:text-[34px] font-black tracking-tight leading-none">
+                                <span class="text-white">AHPRA</span> <span class="text-gold">RN OSCE</span>
+                            </h3>
+                        </div>
+
+                        <!-- Middle Ribbon & Title -->
+                        <div class="pt-5 pb-4 px-6 text-center relative z-10">
+                            <!-- Gold Ribbon Box -->
+                            <div class="inline-block bg-gradient-to-r from-[#cfa036] via-[#dab04c] to-[#c7972c] px-6 py-2 rounded shadow-md">
+                                <span class="text-2xl sm:text-3xl font-black text-[#0b1d30] tracking-tight">10 Station</span>
+                            </div>
+
+                            <!-- Simplified Guide Text -->
+                            <div class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                                <span class="text-[#7fd1c7]">Simplified</span> <span class="text-white">Guide</span>
+                            </div>
+
+                            <!-- Custom Clinical Illustration Area (Stethoscope, Clipboard, ECG, Syringe) -->
+                            <div class="mt-5 mb-4 relative h-52 flex items-center justify-center">
+                                <!-- Subtle Medical Crosses & ECG Background SVG -->
+                                <svg class="w-full h-full" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Background Medical Crosses -->
+                                    <path d="M40 30H52V42H64V54H52V66H40V54H28V42H40V30Z" fill="#ffffff" fill-opacity="0.07"/>
+                                    <path d="M95 15H101V21H107V27H101V33H95V27H89V21H95V15Z" fill="#ffffff" fill-opacity="0.09"/>
+                                    <path d="M100 140H108V148H116V156H108V164H100V156H92V148H100V140Z" fill="#ffffff" fill-opacity="0.08"/>
+                                    <!-- Background ECG Wave -->
+                                    <path d="M10 105 L45 105 L52 92 L58 120 L65 78 L72 125 L78 98 L85 105 L125 105" stroke="#7fd1c7" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    
+                                    <!-- Clipboard Base -->
+                                    <rect x="172" y="34" width="86" height="114" rx="8" fill="#183852" stroke="#7fd1c7" stroke-width="2"/>
+                                    <rect x="180" y="44" width="70" height="96" rx="4" fill="#f8fafc"/>
+                                    <!-- Clipboard Top Clip -->
+                                    <path d="M198 28C198 24.6863 200.686 22 204 22H226C229.314 22 232 24.6863 232 28V38H198V28Z" fill="#6bc5b8"/>
+                                    <circle cx="215" cy="28" r="3" fill="#0f2537"/>
+                                    
+                                    <!-- Checkboxes & Lines on Clipboard -->
+                                    <rect x="188" y="54" width="12" height="12" rx="2" stroke="#1ba098" stroke-width="1.8"/>
+                                    <path d="M190 60L193 63L199 56" stroke="#0f2537" stroke-width="2.2" stroke-linecap="round"/>
+                                    <line x1="206" y1="57" x2="238" y2="57" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+                                    <line x1="206" y1="63" x2="230" y2="63" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+
+                                    <rect x="188" y="74" width="12" height="12" rx="2" stroke="#1ba098" stroke-width="1.8"/>
+                                    <path d="M190 80L193 83L199 76" stroke="#0f2537" stroke-width="2.2" stroke-linecap="round"/>
+                                    <line x1="206" y1="77" x2="238" y2="77" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+                                    <line x1="206" y1="83" x2="230" y2="83" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+
+                                    <rect x="188" y="94" width="12" height="12" rx="2" stroke="#1ba098" stroke-width="1.8"/>
+                                    <path d="M190 100L193 103L199 96" stroke="#0f2537" stroke-width="2.2" stroke-linecap="round"/>
+                                    <line x1="206" y1="97" x2="238" y2="97" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+                                    <line x1="206" y1="103" x2="230" y2="103" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+
+                                    <rect x="188" y="114" width="12" height="12" rx="2" stroke="#94a3b8" stroke-width="1.8"/>
+                                    <line x1="206" y1="117" x2="236" y2="117" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+
+                                    <!-- Pen on Clipboard -->
+                                    <rect x="242" y="62" width="5" height="52" rx="2.5" fill="#1d6fa5"/>
+                                    <polygon points="242,114 247,114 244.5,121" fill="#0f2537"/>
+
+                                    <!-- Stethoscope Illustration -->
+                                    <path d="M122 42 C110 42 108 85 124 102 C134 112 152 112 162 102 C178 85 176 42 164 42" stroke="#7fd1c7" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M119 82 C125 118 161 118 167 82" stroke="#091724" stroke-width="5" stroke-linecap="round"/>
+                                    <path d="M143 111 V156 C143 178 175 182 185 162 C195 142 165 126 155 145 C146 162 172 185 212 174" stroke="#091724" stroke-width="5.5" stroke-linecap="round"/>
+                                    <!-- Stethoscope Chestpiece -->
+                                    <circle cx="222" cy="172" r="14" fill="#7fd1c7" stroke="#0f2537" stroke-width="3"/>
+                                    <circle cx="222" cy="172" r="8" fill="#e2e8f0"/>
+
+                                    <!-- ECG Monitor Mini Screen -->
+                                    <rect x="248" y="65" width="62" height="42" rx="5" fill="#0b1d30" stroke="#7fd1c7" stroke-width="2"/>
+                                    <path d="M253 88 L264 88 L268 78 L272 97 L277 72 L281 95 L285 84 L290 88 L305 88" stroke="#6bc5b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                    <!-- Syringe Bottom Right -->
+                                    <g transform="translate(275, 118) rotate(35)">
+                                        <rect x="0" y="10" width="12" height="38" rx="2" fill="#e2e8f0" stroke="#0f2537" stroke-width="1.5"/>
+                                        <rect x="2" y="22" width="8" height="24" fill="#6bc5b8"/>
+                                        <line x1="6" y1="0" x2="6" y2="10" stroke="#cbd5e1" stroke-width="1.5"/>
+                                        <line x1="6" y1="48" x2="6" y2="60" stroke="#94a3b8" stroke-width="3"/>
+                                        <line x1="1" y1="60" x2="11" y2="60" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                                    </g>
+
+                                    <!-- Pulse Oximeter Badge -->
+                                    <g transform="translate(105, 128) rotate(-18)">
+                                        <rect x="0" y="0" width="24" height="36" rx="6" fill="#38bdf8" stroke="#0f2537" stroke-width="1.5"/>
+                                        <rect x="4" y="6" width="16" height="18" rx="2" fill="#0f2537"/>
+                                        <circle cx="12" cy="29" r="2.5" fill="#f43f5e"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <!-- Subtitle Serif Text -->
+                            <p class="font-serif italic text-xs sm:text-[13px] text-slate-100 leading-relaxed px-2">
+                                A Comprehensive Preparation Resource for the Objective Structured Clinical Examination
+                            </p>
+                        </div>
+
+                        <!-- Book Footer Bar -->
+                        <div class="bg-[#09242b] py-3 px-6 border-t border-white/15 flex items-center justify-between text-[11px] font-medium text-slate-200">
+                            <span>First Edition</span>
+                            <span>Clinical Education Press</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Book Description, Key Takeaways & Modal Trigger -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-soft text-teal-dark text-xs font-bold uppercase tracking-wider border border-teal/20">
+                        <i class="fa-solid fa-award text-gold-dark"></i> Official NextGen Core Study Resource
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight leading-tight">
+                        AHPRA RN OSCE <span class="text-teal">10 Station Simplified Guide</span>
+                    </h2>
+
+                    <!-- Storefront Blurb provided by user -->
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Master the Australian nursing registration exam with the <strong class="text-navy">AHPRA RN OSCE 10 Station Simplified Guide</strong>. Designed specifically for internationally qualified nurses, this practical resource strips away the overwhelm and breaks down all 10 clinical stations into clear, actionable steps. Inside, you will find structured clinical frameworks, critical safety checkpoints, essential communication scripts, and time-management strategies to help you walk into every station with clarity and pass with confidence.
+                    </p>
+
+                    <!-- Social Media / Highlight Callout -->
+                    <div class="bg-slate-50 border-l-4 border-gold p-4 rounded-r-xl">
+                        <p class="text-sm font-medium text-navy italic">
+                            "Stop overcomplicating your OSCE prep. The AHPRA RN OSCE 10 Station Simplified Guide breaks down exactly what you need to say, do, and prioritize across all 10 stations so you can focus on safe, confident clinical practice."
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy">All 10 Core OSCE Stations</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Step-by-step blueprints from scene entry to final documentation.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy">Verbatim Communication Scripts</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Exact culturally safe, patient-centered phrases examiners listen for.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy">8-Minute Pacing Blueprints</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Minute-by-minute time allocation so you never get cut off by the buzzer.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy">Australian Charting Templates</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">ADDS, NIMC, Fluid Balance, and Neurological observation chart guides.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purchase / Sample Action Bar -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 border-t border-slate-100">
+                        <button onclick="openModal('AHPRA RN OSCE 10 Station Simplified Guide ($79 AUD)')" class="px-7 py-4 rounded-xl font-bold text-white bg-navy hover:bg-navy-light transition shadow-lg flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-cart-shopping text-gold"></i>
+                            <span>Order Guide Now — $79 AUD</span>
+                        </button>
+                        <button onclick="openSampleChapterModal()" class="px-6 py-4 rounded-xl font-bold text-teal-dark bg-teal-soft hover:bg-teal/20 border border-teal/30 transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-file-pdf"></i>
+                            <span>Read Free Sample Chapter</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive 10-Station Breakdown / Preview Section -->
+    <section id="station-preview" class="py-20 sm:py-24 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal bg-teal/10 px-3.5 py-1.5 rounded-full">
+                    Interactive Inside Look
+                </span>
+                <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+                    Explore All 10 Simplified OSCE Stations
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg">
+                    Click through any of the 10 clinical stations below to see how our guide breaks down complex scenarios into a repeatable <strong>Step-by-Step Framework</strong>, <strong>Critical Safety Checkpoints</strong>, and <strong>Verbatim Scripts</strong>.
+                </p>
+            </div>
+
+            <!-- Interactive Station Explorer Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: 10 Station Selector Buttons -->
+                <div class="lg:col-span-4 bg-white rounded-2xl p-3 shadow-md border border-slate-200">
+                    <div class="px-3 py-2 border-b border-slate-100 flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Select a Clinical Station</span>
+                        <span class="text-xs font-semibold text-teal">10 / 10 Included</span>
+                    </div>
+                    <div id="station-tabs-container" class="space-y-1.5 max-h-[520px] overflow-y-auto pr-1">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Right Column: Selected Station Detailed Breakdown Card -->
+                <div class="lg:col-span-8">
+                    <div id="station-detail-card" class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden transition-all duration-300">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive OSCE Station Timer / Checklist Demo -->
+    <section id="osce-simulator" class="py-20 sm:py-24 bg-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-medical-grid opacity-20 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/20 border border-gold/40 text-gold text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-stopwatch"></i> Live Practice Tool
+                </div>
+                <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                    Interactive OSCE Station Timer &amp; Safety Scorer
+                </h2>
+                <p class="mt-3 text-slate-300 text-base sm:text-lg">
+                    Experience real exam pacing right on this page. Practice the official <strong>2-Minute Reading Phase</strong> or <strong>8-Minute Clinical Performance Phase</strong> while ticking off mandatory patient safety checkpoints.
+                </p>
+            </div>
+
+            <!-- Simulator Main Box -->
+            <div class="bg-navy-dark/90 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Timer Controls & Clock Display -->
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0 lg:pr-8">
+                        
+                        <!-- Phase Selector Pills -->
+                        <div class="inline-flex p-1.5 rounded-2xl bg-navy border border-white/10 w-full sm:w-auto">
+                            <button id="phase-reading-btn" onclick="setTimerPhase('reading')" class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition bg-gold text-navy-dark shadow">
+                                <i class="fa-solid fa-book-open-reader mr-1.5"></i> 2-Min Reading Phase
+                            </button>
+                            <button id="phase-clinical-btn" onclick="setTimerPhase('clinical')" class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white">
+                                <i class="fa-solid fa-stethoscope mr-1.5"></i> 8-Min Clinical Station
+                            </button>
+                        </div>
+
+                        <!-- Digital Clock Display -->
+                        <div class="bg-navy/90 border border-white/10 rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+                            <div id="timer-status-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-teal/20 text-teal-light mb-2">
+                                Ready: 2-Minute Reading Time
+                            </div>
+                            
+                            <div id="timer-display" class="text-6xl sm:text-7xl font-black tracking-tight font-mono text-white my-2">
+                                02:00
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden mt-4">
+                                <div id="timer-progress" class="h-full bg-gradient-to-r from-teal to-gold transition-all duration-500" style="width: 100%"></div>
+                            </div>
+
+                            <p id="timer-pacing-tip" class="text-xs sm:text-sm text-slate-300 mt-4 italic">
+                                Tip: Identify patient name, age, presenting complaint, and abnormal vitals outside the room.
+                            </p>
+                        </div>
+
+                        <!-- Start / Pause / Reset Controls -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                            <button id="timer-start-btn" onclick="toggleTimer()" class="px-6 py-3.5 rounded-xl font-bold text-navy-dark bg-teal-light hover:bg-white transition flex items-center gap-2 shadow-lg">
+                                <i id="timer-play-icon" class="fa-solid fa-play"></i>
+                                <span id="timer-play-text">Start Timer</span>
+                            </button>
+                            <button onclick="resetTimer()" class="px-5 py-3.5 rounded-xl font-bold text-white bg-white/10 hover:bg-white/20 border border-white/15 transition flex items-center gap-2">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <span>Reset</span>
+                            </button>
+                            <button onclick="playBellSound()" class="px-4 py-3.5 rounded-xl font-semibold text-xs text-gold bg-gold/10 hover:bg-gold/20 border border-gold/30 transition flex items-center gap-1.5" title="Test OSCE Buzzer Audio">
+                                <i class="fa-solid fa-volume-high"></i> Test Bell
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Critical Safety Checklist -->
+                    <div class="lg:col-span-6 space-y-5">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-clipboard-check text-teal-light"></i>
+                                    Universal Station Safety Bundle
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-0.5">Tick each checkpoint as you practice your station entry &amp; closure:</p>
+                            </div>
+                            <div class="text-right">
+                                <span id="checklist-score" class="text-2xl font-extrabold text-gold">0/6</span>
+                                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Safety Score</span>
+                            </div>
+                        </div>
+
+                        <!-- Checklist Items -->
+                        <div id="safety-checklist" class="space-y-2.5">
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">1. Scene Safety &amp; Bare Below the Elbows Hand Hygiene</span>
+                                    <span class="text-xs text-slate-400">Perform 7-step ABHR upon entering &amp; scan environment for hazards.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">2. Therapeutic Introduction &amp; Privacy</span>
+                                    <span class="text-xs text-slate-400">"Hello, my name is [Name], I'm a Registered Nurse today. I've closed the curtain for privacy."</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">3. 3-Point Patient Identification Check</span>
+                                    <span class="text-xs text-slate-400">Verify Full Name, Date of Birth, and URN/MRN verbally AND against ID wristband + chart.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">4. Allergy Status &amp; Reaction Verification</span>
+                                    <span class="text-xs text-slate-400">Ask patient about allergies/reactions and cross-check red allergy wristband &amp; chart.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">5. Explain Procedure &amp; Gain Informed Consent</span>
+                                    <span class="text-xs text-slate-400">Explain what you will do in plain language and confirm: "Are you happy for me to proceed?"</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition select-none">
+                                <input type="checkbox" onchange="updateChecklistScore()" class="safety-check w-5 h-5 rounded accent-teal cursor-pointer">
+                                <div class="flex-1">
+                                    <span class="text-sm font-bold text-white block">6. Safe Closure: Bed Low, Call Bell in Reach &amp; Documentation</span>
+                                    <span class="text-xs text-slate-400">Ensure patient comfort, hand call bell, perform final hand hygiene, and sign chart legibly.</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Checklist Feedback Banner -->
+                        <div id="checklist-feedback" class="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 flex items-center justify-between">
+                            <span>Complete all 6 safety steps within the first 90 seconds &amp; final 60 seconds of your station.</span>
+                            <button onclick="resetChecklist()" class="text-gold hover:underline font-bold shrink-0 ml-3">Clear Checks</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Programs & Pricing Cards -->
+    <section id="programs" class="py-20 sm:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal bg-teal-soft px-3.5 py-1.5 rounded-full border border-teal/20">
+                    Flexible Preparation Pathways
+                </span>
+                <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+                    Choose Your NextGen OSCE &amp; NCLEX Prep Tier
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg">
+                    Whether you want our flagship self-paced 10-Station Simplified Guide or full hands-on mock exam coaching with Australian Nurse Educators, we have a pathway tailored to your exam date.
+                </p>
+            </div>
+
+            <!-- Pricing Grid (3 Tiers) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Tier 1: Self-Paced Simplified Guide -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-dark bg-teal-soft px-3 py-1 rounded-full">Self-Paced Study</span>
+                            <i class="fa-solid fa-book-open text-2xl text-navy/40"></i>
+                        </div>
+                        <h3 class="mt-5 text-2xl font-extrabold text-navy">Self-Paced Simplified Guide</h3>
+                        <p class="mt-2 text-sm text-slate-600">
+                            A streamlined, step-by-step preparation guide covering all 10 stations of the AHPRA RN OSCE. Ideal for independent learners.
+                        </p>
+                        <div class="mt-6 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-navy">$79</span>
+                            <span class="text-sm font-semibold text-slate-500">AUD / One-Time</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3.5 text-sm text-slate-700 border-t border-slate-200 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span><strong>Full AHPRA RN OSCE 10 Station Simplified Guide</strong> (Instant Digital PDF + Print Option)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>All 10 clinical frameworks &amp; critical safety checkpoints</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>Verbatim patient communication &amp; ISBAR handover scripts</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>Printable Australian sample charts (ADDS, NIMC, Fluid Balance)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>2-minute reading &amp; 8-minute station time-management checklists</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-4">
+                        <button onclick="openModal('Self-Paced Simplified Guide ($79 AUD)')" class="w-full py-4 rounded-xl font-bold text-navy bg-white hover:bg-navy hover:text-white border-2 border-navy transition shadow-sm">
+                            Get the Simplified Guide
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 2: OSCE Comprehensive Online Review (Most Popular) -->
+                <div class="bg-navy text-white rounded-3xl p-8 border-2 border-gold shadow-2xl flex flex-col justify-between relative lg:-translate-y-3">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy-dark text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+                        Most Popular for IQNs
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/15 px-3 py-1 rounded-full">Complete Online Prep</span>
+                            <i class="fa-solid fa-laptop-medical text-2xl text-teal-light"></i>
+                        </div>
+                        <h3 class="mt-5 text-2xl font-extrabold text-white">OSCE Comprehensive Online Review</h3>
+                        <p class="mt-2 text-sm text-slate-300">
+                            Full video demonstrations, live weekly Zoom workshops, and our Simplified Guide included. Built to master clinical assessment &amp; safety.
+                        </p>
+                        <div class="mt-6 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-gold">$890</span>
+                            <span class="text-sm font-semibold text-slate-300">AUD / 12-Week Access</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3.5 text-sm text-slate-200 border-t border-white/15 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                                <span><strong>Includes the AHPRA RN OSCE 10 Station Simplified Guide</strong> (Free Hardcopy + Digital)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                                <span>40+ HD clinical skill demonstration videos filmed in Australian sim labs</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                                <span>Weekly live interactive ISBAR, A-G Deteriorating Patient &amp; Drug Calculation drills</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                                <span>2x Simulated Online Timed Mini-OSCE Assessments with educator feedback</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                                <span>Bonus NCLEX-RN NextGen (NGN) Case Study bridge module</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-4">
+                        <button onclick="openModal('OSCE Comprehensive Online Review ($890 AUD)')" class="w-full py-4 rounded-xl font-bold text-navy-dark bg-gold hover:bg-gold-light transition shadow-lg shadow-gold/25">
+                            Enroll in Comprehensive Review
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tier 3: 1-on-1 Mock Exam & Coaching -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navy bg-slate-200 px-3 py-1 rounded-full">Intensive + Practical</span>
+                            <i class="fa-solid fa-user-doctor text-2xl text-teal"></i>
+                        </div>
+                        <h3 class="mt-5 text-2xl font-extrabold text-navy">1-on-1 Mock Exam &amp; Coaching</h3>
+                        <p class="mt-2 text-sm text-slate-600">
+                            Simulate the full 10-station circuit under strict 8-minute timed conditions with individualized line-by-line examiner feedback.
+                        </p>
+                        <div class="mt-6 flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-navy">$1,490</span>
+                            <span class="text-sm font-semibold text-slate-500">AUD / Full VIP Package</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3.5 text-sm text-slate-700 border-t border-slate-200 pt-6">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span><strong>Everything in the Comprehensive Online Review + Simplified Guide</strong></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>Full 10-Station Timed Mock OSCE Circuit (In-Centre Melbourne/Adelaide or Live Virtual)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>4x Private 1-on-1 Coaching Sessions with an Australian Clinical Nurse Educator</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>Complete Australian Consumables &amp; Equipment Practice Kit shipped to your door</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-teal mt-1"></i>
+                                <span>Pass Assurance Support until you receive your AHPRA Registration</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8 pt-4">
+                        <button onclick="openModal('1-on-1 Mock Exam & Coaching ($1,490 AUD)')" class="w-full py-4 rounded-xl font-bold text-white bg-teal hover:bg-teal-dark transition shadow-md">
+                            Book 1-on-1 Coaching Package
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 sm:py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal bg-teal-soft px-3.5 py-1.5 rounded-full">
+                    Verified IQN Graduates
+                </span>
+                <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+                    From Exam Anxiety to Australian Registered Nurses
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg">
+                    Hear from internationally qualified nurses who used the <strong>AHPRA RN OSCE 10 Station Simplified Guide</strong> and NextGen coaching to pass their clinical exam.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-7 rounded-3xl shadow-md border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic">
+                            "Before finding the <strong>10 Station Simplified Guide</strong>, I was drowning in 500-page textbooks. This guide broke every station down into exact 8-minute chunks and gave me the exact words to say for consent, ANTT, and ISBAR handover. Passed on my very first attempt in Adelaide!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-full bg-navy text-gold font-bold flex items-center justify-center text-sm">
+                            MR
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy">Maria R., RN</div>
+                            <div class="text-xs text-slate-500">IQN from Philippines • Now working in VIC</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-7 rounded-3xl shadow-md border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic">
+                            "Time management was my biggest weakness. NextGen Nurses taught me how to use the 2-minute reading time to map out my safety checks and ADDS chart documentation. Walking into the A-G Deteriorating Patient station felt like muscle memory."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-full bg-teal text-white font-bold flex items-center justify-center text-sm">
+                            JS
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy">Jaspreet S., RN</div>
+                            <div class="text-xs text-slate-500">IQN from India • Now working in NSW</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-7 rounded-3xl shadow-md border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic">
+                            "The communication scripts inside the Simplified Guide are pure gold. Knowing how to empathetically educate an anxious patient while staying within the 8-minute timer made all the difference. Best investment for my Australian nursing registration!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-full bg-gold text-navy-dark font-bold flex items-center justify-center text-sm">
+                            CO
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-navy">Chidi O., RN</div>
+                            <div class="text-xs text-slate-500">IQN from Nigeria • Now working in QLD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 sm:py-24 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal bg-teal-soft px-3.5 py-1.5 rounded-full">
+                    Got Questions?
+                </span>
+                <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+                    Frequently Asked Questions
+                </h2>
+                <p class="mt-2 text-slate-600 text-base">
+                    Everything you need to know about the AHPRA RN OSCE 10 Station Simplified Guide and our review programs.
+                </p>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(0)" class="w-full px-6 py-5 text-left bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between gap-4">
+                        <span class="font-bold text-navy text-base">What makes the "AHPRA RN OSCE 10 Station Simplified Guide" different from standard nursing textbooks?</span>
+                        <i id="faq-icon-0" class="fa-solid fa-chevron-down text-teal transition-transform"></i>
+                    </button>
+                    <div id="faq-content-0" class="px-6 py-5 bg-white text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Standard nursing textbooks explain theory in long chapters, which can feel overwhelming when you only have 8 minutes per station. Our <strong>10 Station Simplified Guide</strong> is engineered specifically for OSCE exam conditions: every station is formatted into a 2-minute reading strategy, non-negotiable safety checkpoints, a chronological clinical execution checklist, and word-for-word therapeutic communication scripts aligned with Australian National Safety and Quality Health Service (NSQHS) standards.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full px-6 py-5 text-left bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between gap-4">
+                        <span class="font-bold text-navy text-base">How is the actual AHPRA RN OSCE structured on exam day?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-teal transition-transform"></i>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 py-5 bg-white text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        The AHPRA RN OSCE consists of <strong>10 stations</strong> testing your clinical skills, physiological assessment, medication safety, aseptic technique, patient education, and clinical communication. For each station, you have <strong>2 minutes of reading time</strong> outside the room to review the scenario, followed by <strong>8 minutes inside the station</strong> to perform the assessment/skill, communicate with the simulated patient or mannequin, and complete your documentation.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full px-6 py-5 text-left bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between gap-4">
+                        <span class="font-bold text-navy text-base">Do I receive instant access to the Simplified Guide when I order?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-teal transition-transform"></i>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 py-5 bg-white text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Yes! As soon as you complete your enrollment or purchase, you receive immediate access to the high-resolution interactive digital edition along with printable Australian clinical charts (NIMC, ADDS, Fluid Balance, and Neuro Obs). If you enroll in the Comprehensive Review or 1-on-1 Coaching package, we also ship a spiral-bound print copy directly to your address.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full px-6 py-5 text-left bg-slate-50 hover:bg-slate-100 transition flex items-center justify-between gap-4">
+                        <span class="font-bold text-navy text-base">I am still preparing for the NCLEX-RN under the OBA pathway. Can I join NextGen Nurses?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-teal transition-transform"></i>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 py-5 bg-white text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                        Absolutely. Under AHPRA's Outcome-Based Assessment (OBA) pathway for Internationally Qualified Nurses, you first complete the NCLEX-RN (MCQ exam) followed by the RN OSCE. We offer dedicated NextGen NCLEX-RN clinical judgment modules and seamless transition packages into our 10-Station OSCE program.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-teal flex items-center justify-center text-white">
+                            <i class="fa-solid fa-user-nurse text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block text-lg font-extrabold text-white leading-none">
+                                NextGen <span class="text-teal-light">Nurses</span>
+                            </span>
+                            <span class="block text-[10px] font-semibold uppercase tracking-widest text-gold mt-0.5">
+                                Review Centre Australia
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+                        Empowering Internationally Qualified Nurses (IQNs) to pass the AHPRA RN OSCE and NCLEX-RN with structured clinical frameworks, safety checkpoints, and authentic Australian simulation training.
+                    </p>
+                    <div class="flex items-center gap-4 text-sm text-slate-300 pt-1">
+                        <span><i class="fa-solid fa-location-dot text-teal-light mr-1.5"></i> Melbourne &amp; Adelaide Sim Centres</span>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Quick Navigation</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#featured-guide" class="hover:text-teal-light transition">10 Station Simplified Guide</a></li>
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">10 Stations Interactive Preview</a></li>
+                        <li><a href="#osce-simulator" class="hover:text-teal-light transition">2+8 Min Station Timer</a></li>
+                        <li><a href="#programs" class="hover:text-teal-light transition">Review Programs &amp; Pricing</a></li>
+                        <li><a href="#faq" class="hover:text-teal-light transition">OBA Pathway FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Core Stations -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Key OSCE Modules</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">A-G Deteriorating Patient</a></li>
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">Safe Medication &amp; NIMC</a></li>
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">Aseptic Non-Touch Technique</a></li>
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">ISBAR Clinical Handover</a></li>
+                        <li><a href="#station-preview" class="hover:text-teal-light transition">Physiological &amp; Neuro Obs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact CTA -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Speak With an Educator</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        Have an upcoming OSCE test date in Adelaide or preparing your OBA portfolio?
+                    </p>
+                    <button onclick="openModal('Free 15-Min OSCE Readiness Consultation')" class="w-full py-3 px-4 rounded-xl font-bold text-xs text-navy-dark bg-gold hover:bg-gold-light transition shadow">
+                        Book Free Readiness Call
+                    </button>
+                    <p class="text-xs text-slate-500 mt-3">
+                        <i class="fa-regular fa-envelope mr-1"></i> support@nextgennurses.com.au
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 NextGen Nurses Review Centre &amp; Clinical Education Press. All rights reserved.</p>
+                <p class="text-center sm:text-right">
+                    Disclaimer: NextGen Nurses Review Centre is an independent clinical education provider and is not affiliated with or endorsed by AHPRA or the NMBA.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enrollment / Purchase Modal -->
+    <div id="enrollment-modal" class="fixed inset-0 z-50 hidden bg-navy-dark/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative my-8">
+            <button onclick="closeModal()" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modal-form-container">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-soft text-teal-dark text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-shield-halved"></i> Fast-Track IQN Registration
+                </div>
+                <h3 class="text-2xl font-extrabold text-navy">Reserve Your Place / Order Guide</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Complete your details below for instant digital access to the <strong>Simplified Guide</strong> and personalized onboarding from our Nurse Educators.
+                </p>
+
+                <form id="enrollment-form" onsubmit="handleFormSubmit(event)" class="mt-6 space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Selected Program or Resource</label>
+                        <select id="modal-program-select" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-navy font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-teal">
+                            <option value="AHPRA RN OSCE 10 Station Simplified Guide ($79 AUD)">AHPRA RN OSCE 10 Station Simplified Guide ($79 AUD)</option>
+                            <option value="Self-Paced Simplified Guide ($79 AUD)">Self-Paced Simplified Guide ($79 AUD)</option>
+                            <option value="OSCE Comprehensive Online Review ($890 AUD)">OSCE Comprehensive Online Review ($890 AUD)</option>
+                            <option value="1-on-1 Mock Exam & Coaching ($1,490 AUD)">1-on-1 Mock Exam &amp; Coaching ($1,490 AUD)</option>
+                            <option value="Free 15-Min OSCE Readiness Consultation">Free 15-Min OSCE Readiness Consultation</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Full Name *</label>
+                            <input type="text" required placeholder="e.g., Sarah Jenkins, RN" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Email Address *</label>
+                            <input type="email" required placeholder="nurse@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="+61 400 000 000" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Target OSCE Exam Window</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal">
+                                <option>Within the next 4 weeks</option>
+                                <option>1 to 3 months</option>
+                                <option>3 to 6 months</option>
+                                <option>Currently completing NCLEX-RN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-teal hover:bg-teal-dark transition shadow-lg shadow-teal/25 flex items-center justify-center gap-2 mt-2">
+                        <span>Confirm &amp; Proceed</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success Message State -->
+            <div id="modal-success-container" class="hidden text-center py-6 space-y-4">
+                <div class="w-16 h-16 rounded-full bg-teal-soft text-teal mx-auto flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-navy">You're All Set!</h3>
+                <p id="modal-success-text" class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                    Thank you! We have sent your digital access link and onboarding instructions for the <strong>AHPRA RN OSCE 10 Station Simplified Guide</strong> directly to your inbox.
+                </p>
+                <div class="pt-4">
+                    <button onclick="closeModal()" class="px-6 py-3 rounded-xl font-bold text-white bg-navy hover:bg-navy-light transition">
+                        Return to Website
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample Chapter Preview Modal -->
+    <div id="sample-modal" class="fixed inset-0 z-50 hidden bg-navy-dark/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative my-8">
+            <button onclick="closeSampleModal()" aria-label="Close Sample" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal mb-2">
+                <i class="fa-solid fa-book-open"></i> Sneak Peek Excerpt • Clinical Education Press
+            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-navy">
+                Sample Blueprint: The 8-Minute Station Pacing Formula
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">From Chapter 1 of the AHPRA RN OSCE 10 Station Simplified Guide (First Edition)</p>
+
+            <div class="mt-5 space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs sm:text-sm text-slate-700 max-h-[360px] overflow-y-auto">
+                <div class="pb-3 border-b border-slate-200">
+                    <span class="font-extrabold text-navy block">Minutes 0:00 – 1:30 | Safe Entry &amp; 3-Point ID</span>
+                    <p class="mt-1">Check scene safety, perform Bare Below the Elbows Hand Hygiene, introduce yourself with role, close privacy curtain, verify 3 patient identifiers (Name, DOB, URN) verbally and on wristband, verify Allergies, explain procedure, and gain verbal consent.</p>
+                </div>
+                <div class="pb-3 border-b border-slate-200">
+                    <span class="font-extrabold text-teal-dark block">Minutes 1:30 – 5:30 | Core Clinical Task &amp; Assessment</span>
+                    <p class="mt-1">Execute the station's primary clinical intervention (e.g., A-G Assessment, ANTT Wound Dressing, IV/Oral Medication Administration, or Physiological Observations) while maintaining ongoing therapeutic communication and pain checks.</p>
+                </div>
+                <div class="pb-3 border-b border-slate-200">
+                    <span class="font-extrabold text-navy block">Minutes 5:30 – 7:00 | Real-Time Australian Charting</span>
+                    <p class="mt-1">Document findings accurately in black/blue ink on the ADDS, NIMC, or Fluid Balance chart. Calculate total ADDS/EWS score, print name, sign, and record date/time.</p>
+                </div>
+                <div>
+                    <span class="font-extrabold text-gold-dark block">Minutes 7:00 – 8:00 | Safe Closure &amp; Escalation/Handover</span>
+                    <p class="mt-1">Ensure bed is in lowest position, brakes locked, call bell within reach, sharps/waste disposed of correctly, perform final hand hygiene, and deliver crisp ISBAR escalation if clinical triggers are met.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-100">
+                <span class="text-xs text-slate-500">Want all 10 stations with full scripts &amp; checklists?</span>
+                <button onclick="closeSampleModal(); openModal('AHPRA RN OSCE 10 Station Simplified Guide ($79 AUD)');" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-navy-dark bg-gold hover:bg-gold-light transition text-sm">
+                    Get the Full 10-Station Guide ($79 AUD)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================================
+           1. DATA FOR ALL 10 SIMPLIFIED AHPRA RN OSCE STATIONS
+           ========================================================================= */
+        const osceStations = [
+            {
+                id: 1,
+                code: "Station 01",
+                title: "Vital Signs & Physiological Assessment (ADDS Chart)",
+                category: "Core Clinical Assessment",
+                icon: "fa-heart-pulse",
+                timeSplit: "1.5m Entry • 4m Full Obs • 1.5m ADDS Charting • 1m Escalation",
+                overview: "Accurately measure and interpret Respiratory Rate, SpO2, Blood Pressure, Heart Rate, Temperature, Pain Score, and Consciousness (ACVPU), then plot on the Australian Adult Deterioration Detection System (ADDS) chart.",
+                steps: [
+                    "Perform hand hygiene, confirm 3-point Patient ID, check allergies, and ensure patient has rested for 5 minutes prior to BP.",
+                    "Count Respiratory Rate silently for a full 60 seconds while palpating radial pulse to check rhythm and regularity.",
+                    "Measure SpO2, two-step Blood Pressure (palpate systolic first, then auscultate/automated), tympanic temperature, and COLDSPA pain score.",
+                    "Plot every observation using accurate symbols on the ADDS chart, calculate individual & total ADDS score, and escalate immediately if score meets MET/Clinical Review criteria."
+                ],
+                safetyCheckpoints: [
+                    "Never estimate Respiratory Rate — examiners watch you time a full 60 seconds.",
+                    "Select correct BP cuff size and avoid arms with IV infusions, AV fistulas, or mastectomy history.",
+                    "Add up the total ADDS score accurately; an uncalculated or un-escalated abnormal score is a critical error."
+                ],
+                script: "\"Mr. Taylor, I've completed your observations. Your blood pressure is slightly low today at 96/60 mmHg and your heart rate is 108 beats per minute. Because these readings sit in the yellow zone on our hospital chart, I am going to stay with you, elevate the foot of your bed slightly, and ask the medical officer to review you right away.\""
+            },
+            {
+                id: 2,
+                code: "Station 02",
+                title: "Safe Medication Administration (Oral / SC / IM & NIMC)",
+                category: "Medication Safety",
+                icon: "fa-syringe",
+                timeSplit: "2m NIMC Audit • 2m 6-Rights Check • 2.5m Admin • 1.5m Sign & Monitor",
+                overview: "Audit the Australian National Inpatient Medication Chart (NIMC) for prescription validity, verify the 6 Rights + 3 Checks, and safely administer oral, subcutaneous, or intramuscular medication.",
+                steps: [
+                    "Inspect the NIMC completely: verify patient ID label, documented ADR/Allergy box, prescriber signature, legible drug name, dose, route, frequency, and check that the dose has not already been given.",
+                    "Perform First Check at medication drawer: verify drug label and expiry date against NIMC.",
+                    "Perform Second Check during preparation (calculate dose/volume accurately) and Third Check at the bedside with the patient.",
+                    "Administer medication safely (dispose of sharps immediately into yellow bin if parenteral without recapping), witness ingestion, and sign NIMC in the correct time column."
+                ],
+                safetyCheckpoints: [
+                    "Explicitly check for prescription errors or contraindications (e.g., withheld antihypertensive when SBP < 100 mmHg, or penicillin allergy with cephalosporin).",
+                    "Verify expiry date out loud on every ampoule, blister pack, and normal saline flush.",
+                    "Never sign the NIMC before the patient has actually swallowed or received the medication."
+                ],
+                script: "\"Mrs. Nguyen, before I give you your morning tablet, could you please state your full name and date of birth and tell me if you have any allergies? Today your doctor has prescribed Ramipril 5mg by mouth to help manage your blood pressure. It can occasionally make you feel lightheaded when standing up, so please use your call bell before getting out of bed.\""
+            },
+            {
+                id: 3,
+                code: "Station 03",
+                title: "Wound Care & Aseptic Non-Touch Technique (ANTT)",
+                category: "Infection Prevention",
+                icon: "fa-kit-medical",
+                timeSplit: "1.5m Prep & Pain Check • 4.5m Strict ANTT Procedure • 2m Waste & Documentation",
+                overview: "Assess a post-operative or acute wound and perform a sterile simple wound dressing while maintaining strict Standard-ANTT, protecting Key-Parts and Key-Sites at all times.",
+                steps: [
+                    "Assess patient pain level 15–30 minutes prior (confirm analgesia efficacy), clean dressing trolley from top to bottom with detergent wipes, and allow to dry.",
+                    "Open sterile dressing pack touching only outer 1-inch corners, pour sterile 0.9% Sodium Chloride into galley pot without splashing, and arrange equipment using non-touch forceps.",
+                    "Perform hand hygiene, don non-sterile gloves to remove old dressing, inspect wound bed (TIME framework: Tissue, Infection, Moisture, Edge), discard gloves, and perform surgical/alcohol hand rub.",
+                    "Don sterile gloves (or use sterile forceps), clean wound with single downward strokes from cleanest to least clean area, dry surrounding skin, apply primary/secondary dressing, and document on Wound Care Chart."
+                ],
+                safetyCheckpoints: [
+                    "Never reach across your sterile field or turn your back on an open sterile tray.",
+                    "Use each sterile gauze swab for ONE single stroke only before discarding into the clinical waste bag.",
+                    "If a Key-Part touches a non-sterile surface, verbalize contamination immediately and replace the item."
+                ],
+                script: "\"Mr. Davies, I'm going to clean and redress your surgical wound now using a sterile technique to prevent any infection. You'll feel a cool sensation as I gently wipe along the incision line with sterile saline. Please let me know immediately if you feel any sharp discomfort.\""
+            },
+            {
+                id: 4,
+                code: "Station 04",
+                title: "Deteriorating Patient & A–G Clinical Assessment",
+                category: "Acute Care & Escalation",
+                icon: "fa-bolt-lightning",
+                timeSplit: "1m Rapid Entry • 5m Systematic A-G Assessment • 2m ISBAR MET Call",
+                overview: "Recognize and respond to acute physiological deterioration (e.g., sepsis, post-op hemorrhage, hypoxia, or hypoglycemia) using a structured Airway, Breathing, Circulation, Disability, Exposure, Fluids, Glucose (A–G) approach.",
+                steps: [
+                    "Ensure scene safety, assess immediate responsiveness, and call for help early if patient is unresponsive.",
+                    "Airway & Breathing: Check airway patency, look/listen/feel for work of breathing, apply SpO2 probe, count RR, auscultate lung fields, and sit patient upright + apply oxygen if hypoxic.",
+                    "Circulation & Disability: Palpate central/peripheral pulses, check capillary refill (<2s), measure BP, inspect IV access, assess ACVPU/GCS + pupillary response.",
+                    "Exposure, Fluids & Glucose: Inspect surgical sites/drains, check urine output/fluid balance, perform BGL finger-prick check, and escalate via structured ISBAR to Rapid Response / MET team."
+                ],
+                safetyCheckpoints: [
+                    "Fix life-threatening problems as you find them in A or B before moving to C (e.g., sit patient up and administer oxygen for SpO2 86% before checking blood glucose).",
+                    "Always check Blood Glucose Level (G) in any patient with altered conscious state or acute confusion.",
+                    "Trigger the appropriate hospital escalation pathway (Clinical Review vs. MET Call) based on ADDS criteria."
+                ],
+                script: "\"Hello MET Team, this is RN [Name] calling from Surgical Ward Bed 4 regarding 68-year-old Arthur Pendelton, 1 day post-laparotomy. I am calling because he has triggered a MET call with a respiratory rate of 28, SpO2 of 88% on room air, heart rate 124, and BP 88/52. I have sat him upright, commenced 10L oxygen via non-rebreather mask, and require urgent medical review.\""
+            },
+            {
+                id: 5,
+                code: "Station 05",
+                title: "Clinical Handover & ISBAR Communication",
+                category: "Clinical Communication",
+                icon: "fa-Tower-broadcast",
+                timeSplit: "2m Case Synthesis • 4.5m Structured ISBAR Delivery • 1.5m Read-Back & Q&A",
+                overview: "Synthesize complex patient notes, pathology/vital trends, and active clinical risks to deliver a concise, prioritized shift-to-shift or inter-disciplinary handover using the Australian ISBAR framework.",
+                steps: [
+                    "Introduction: State your name, role, ward/unit, and confirm who you are handing over to.",
+                    "Situation: State patient's full name, age, DOB, URN, admitting diagnosis, resuscitation status, and primary reason for handover/escalation.",
+                    "Background: Summarize relevant past medical history, allergies/ADRs, procedures performed, and clinical trajectory over the shift.",
+                    "Assessment & Recommendation: Present latest A–G findings and abnormal vital signs clearly, then state concrete actions needed, timeframes, and invite questions/closed-loop read-back."
+                ],
+                safetyCheckpoints: [
+                    "Highlight Allergies, Resuscitation/Goals of Care status, and Falls/Pressure Injury risks early in the handover.",
+                    "Avoid reading notes word-for-word; group findings logically under I-S-B-A-R headings.",
+                    "Use closed-loop communication when receiving verbal/telephone orders during an escalation."
+                ],
+                script: "\"To summarize my Recommendation: Mrs. Clarke requires a repeat serum potassium level at 14:00, strict hourly urine output monitoring via her IDC, and a medical review if her systolic BP drops below 100 mmHg. Do you have any questions about her care plan for the afternoon shift?\""
+            },
+            {
+                id: 6,
+                code: "Station 06",
+                title: "Patient Education & Discharge Planning",
+                category: "Health Promotion",
+                icon: "fa-comments",
+                timeSplit: "1.5m Assess Baseline • 4m Tailored Education • 2.5m Teach-Back & Red Flags",
+                overview: "Deliver empathetic, jargon-free discharge or newly-diagnosed medication/device education (e.g., Warfarin/Apixaban therapy, Insulin pen, Asthma Spacer, or Heart Failure self-management).",
+                steps: [
+                    "Establish rapport, verify patient ID, and assess the patient's baseline understanding, health literacy, and immediate concerns.",
+                    "Break education into 3 digestible pillars: (1) Purpose & How it Works, (2) Practical Daily Routine / Administration, and (3) Side Effects & Safety Precautions.",
+                    "Clearly outline 'Red Flag' symptoms that require calling 000 or returning to the Emergency Department vs. seeing their GP.",
+                    "Verify comprehension using the 'Teach-Back' method and provide written Australian consumer health information leaflets."
+                ],
+                safetyCheckpoints: [
+                    "Never use unexplained medical jargon (say 'shortness of breath' instead of 'dyspnea', 'bruising or bleeding' instead of 'hemorrhage').",
+                    "Always perform Teach-Back: ask the patient to explain in their own words how they will take their medicine or what warning signs to watch for.",
+                    "Address lifestyle modifications respectfully without judgment."
+                ],
+                script: "\"Because Apixaban thins your blood to prevent clots, the most important thing to watch for at home is unusual bleeding—such as bleeding gums, nosebleeds that won't stop after 10 minutes, dark tarry stools, or if you have a fall and hit your head. To make sure I've explained this clearly, could you tell me in your own words what you would do if you noticed any of those signs?\""
+            },
+            {
+                id: 7,
+                code: "Station 07",
+                title: "Neurological Assessment & GCS Charting",
+                category: "Focused Assessment",
+                icon: "fa-brain",
+                timeSplit: "1.5m Entry • 4m GCS + Pupils + Limb Power • 2.5m Neuro Obs Charting",
+                overview: "Perform a comprehensive Glasgow Coma Scale (GCS) assessment including Eye Opening, Verbal Response, Motor Response, Pupillary size/reactivity, and upper/lower limb motor strength.",
+                steps: [
+                    "Observe Eye Opening spontaneously (E4), to speech (E3), to pressure (E2), or none (E1).",
+                    "Assess Verbal Orientation by asking Time, Place, and Person (V5 oriented, V4 confused, V3 words, V2 sounds, V1 none).",
+                    "Assess Motor Response by asking patient to obey 2-step commands (M6) and test bilateral upper limb drift/grip strength and lower limb plantar/dorsiflexion.",
+                    "Assess pupil size (mm) before light and brisk/sluggish reaction to penlight bilaterally, then record GCS score out of 15 on the Neurological Observation Chart."
+                ],
+                safetyCheckpoints: [
+                    "Always record the best response observed, and note right vs. left limb power separately on the chart.",
+                    "A drop of ≥ 2 points in total GCS or ≥ 1 point in Motor score, or a new unilateral dilated pupil, requires an immediate MET call.",
+                    "Warn the patient before shining the penlight into their eyes."
+                ],
+                script: "\"Ms. Evans, I'm going to shine a small light briefly into each of your eyes to check how your pupils respond—please look straight ahead at my nose. Next, could you squeeze both of my fingers as hard as you can, and now push both feet down against my hands like pressing a car pedal?\""
+            },
+            {
+                id: 8,
+                code: "Station 08",
+                title: "IV Therapy & Fluid Balance Management",
+                category: "Clinical Skills & Charting",
+                icon: "fa-droplet",
+                timeSplit: "2m Order & Cannula Check • 3.5m Priming/VIP Score • 2.5m Fluid Balance Chart",
+                overview: "Verify an Intravenous Fluid Order, assess peripheral IV cannula site using the Visual Infusion Phlebitis (VIP) score, flush/prime safely, and accurately calculate a 24-hour Fluid Balance Chart.",
+                steps: [
+                    "Cross-check the IV fluid order against patient ID, allergies, fluid type (e.g., 0.9% Sodium Chloride vs. Hartmann's), volume, infusion rate (mL/hr), and additive checks.",
+                    "Inspect the IV cannula dressing and insertion site for redness, swelling, warmth, pain, or palpable venous cord (calculate VIP Score).",
+                    "Use Scrub-the-Hub (15 seconds vigorous 2% chlorhexidine/70% alcohol swab + 30 seconds drying time) before accessing needleless connector with pulsatile 0.9% NaCl flush.",
+                    "Total all oral/IV Inputs and urine/drain/vomitus Outputs on the Fluid Balance Chart, calculate net positive or negative balance, and escalate oliguria (<0.5 mL/kg/hr)."
+                ],
+                safetyCheckpoints: [
+                    "Never flush an IV cannula if the patient reports pain or the VIP score is ≥ 2 (resite cannula required).",
+                    "Ensure ZERO air bubbles in priming line or saline flush syringe.",
+                    "Double-check arithmetic when subtracting Total Output from Total Input; specify '+' or '-' clearly."
+                ],
+                script: "\"Mr. Henderson, I'm inspecting the IV cannula in your forearm first. Does it feel tender or painful at all when I gently touch around the dressing? I'm now cleaning the port for 15 seconds and flushing it with a small amount of sterile salty water—please tell me immediately if it stings or feels tight.\""
+            },
+            {
+                id: 9,
+                code: "Station 09",
+                title: "Pain, Falls & Pressure Injury Risk Assessment",
+                category: "Risk Mitigation & Care Plan",
+                icon: "fa-person-cane",
+                timeSplit: "2m COLDSPA Pain • 3m Falls & Waterlow/Braden • 3m Care Plan & Prevention",
+                overview: "Conduct a holistic risk screening for an older or post-operative adult using validated Australian falls and pressure injury tools alongside a comprehensive COLDSPA pain assessment.",
+                steps: [
+                    "Conduct a structured pain assessment (Character, Onset, Location, Duration, Severity 0–10, Pattern, Associated factors) and evaluate non-pharmacological + pharmacological relief.",
+                    "Screen Falls Risk: review history of falls in past 12 months, high-risk medications (sedatives/antihypertensives), mobility/gait aids, continence needs, and footwear.",
+                    "Screen Pressure Injury Risk: inspect bony prominences (sacrum, heels, hips), nutrition/hydration, moisture, and sensory perception.",
+                    "Implement immediate bedside interventions (non-slip socks, bed low, brakes locked, call bell in reach, 2-hourly repositioning schedule) and document on Risk Assessment Chart."
+                ],
+                safetyCheckpoints: [
+                    "Do not just fill out the paper risk tool—you must physically apply the bedside safety interventions before leaving the room.",
+                    "Always reassess pain 30–60 minutes after administering analgesia.",
+                    "Involve the patient and family in their falls prevention plan."
+                ],
+                script: "\"Mrs. O'Connor, because you had hip surgery yesterday and are taking strong pain relief, your risk of having a slip or fall is temporarily higher. I've lowered your bed, locked the brakes, placed your walking frame safely aside, and clipped the call bell right to your pillow. Please press the bell every time you want to sit up or use the bathroom so I can assist you safely.\""
+            },
+            {
+                id: 10,
+                code: "Station 10",
+                title: "Respiratory Care, Oxygen Therapy & Inhaler Technique",
+                category: "Clinical Intervention",
+                icon: "fa-lungs",
+                timeSplit: "2m Resp Assessment • 3.5m Device Delivery • 2.5m Re-evaluation & Charting",
+                overview: "Perform a focused respiratory assessment, select and titrate the correct oxygen delivery device (Nasal Prongs, Hudson Mask, Venturi, or Non-Rebreather) to target SpO2, or coach MDI + Spacer inhaler technique.",
+                steps: [
+                    "Position the breathless patient upright in High Fowler's position immediately to maximize lung expansion.",
+                    "Assess respiratory rate, rhythm, accessory muscle use, tracheal alignment, chest expansion symmetry, and auscultate anterior/posterior lung fields.",
+                    "Verify target SpO2 range (88–92% for COPD/hypercapnic risk vs. 94–98% for standard acute illness) and apply the correct oxygen mask/flow rate or administer bronchodilator via primed Spacer.",
+                    "Reassess SpO2 and work of breathing after intervention, educate patient on oral care/humidification, and document oxygen therapy on the observation chart."
+                ],
+                safetyCheckpoints: [
+                    "Never put a Non-Rebreather Mask on a patient without priming/inflating the reservoir bag with oxygen first (>10–15 L/min).",
+                    "Check whether the patient has chronic COPD/CO2 retention before administering high-flow oxygen; target 88–92% if COPD is documented.",
+                    "Shake the Salbutamol MDI before each puff and administer 1 puff at a time into the spacer followed by 4 normal breaths."
+                ],
+                script: "\"Mr. Patel, I have sat your bed right up to make it easier for you to breathe. Because you have a history of COPD, we aim to keep your oxygen levels safely between 88% and 92%. I am placing soft nasal prongs on at 2 litres per minute and will stay right here to recheck your breathing and oxygen levels in two minutes.\""
+            }
+        ];
+
+        let activeStationId = 1;
+
+        function renderStationTabs() {
+            const container = document.getElementById('station-tabs-container');
+            container.innerHTML = osceStations.map(st => {
+                const isActive = st.id === activeStationId;
+                return `
+                    <button onclick="selectStation(${st.id})" class="w-full text-left p-3.5 rounded-xl transition flex items-center gap-3.5 border ${
+                        isActive 
+                        ? 'bg-navy text-white border-navy shadow-md' 
+                        : 'bg-white text-slate-700 border-slate-100 hover:bg-teal-soft/60 hover:border-teal/30'
+                    }">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 font-extrabold text-xs ${
+                            isActive ? 'bg-gold text-navy-dark' : 'bg-slate-100 text-navy'
+                        }">
+                            ${st.id < 10 ? '0' + st.id : st.id}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-[10px] font-bold uppercase tracking-wider ${isActive ? 'text-teal-light' : 'text-slate-400'}">
+                                ${st.category}
+                            </div>
+                            <div class="text-xs sm:text-sm font-bold truncate">
+                                ${st.title}
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs ${isActive ? 'text-gold' : 'text-slate-300'}"></i>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderStationDetail() {
+            const st = osceStations.find(item => item.id === activeStationId);
+            const card = document.getElementById('station-detail-card');
+
+            card.innerHTML = `
+                <!-- Top Banner -->
+                <div class="bg-gradient-to-r from-navy via-navy-light to-[#154b52] p-6 sm:p-8 text-white">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-gold text-navy-dark text-xs font-extrabold uppercase tracking-wider">
+                            ${st.code} • ${st.category}
+                        </span>
+                        <span class="text-xs font-semibold text-teal-light bg-white/10 px-3 py-1 rounded-full border border-white/15">
+                            <i class="fa-regular fa-clock mr-1"></i> ${st.timeSplit}
+                        </span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i class="fa-solid ${st.icon} text-gold"></i>
+                        <span>${st.title}</span>
+                    </h3>
+                    <p class="mt-2.5 text-sm sm:text-base text-slate-200 leading-relaxed">
+                        ${st.overview}
+                    </p>
+                </div>
+
+                <!-- Body Content -->
+                <div class="p-6 sm:p-8 space-y-6">
+                    
+                    <!-- Step-by-Step Clinical Framework -->
+                    <div>
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-navy flex items-center gap-2 mb-3">
+                            <span class="w-6 h-6 rounded-md bg-teal text-white flex items-center justify-center"><i class="fa-solid fa-list-ol text-xs"></i></span>
+                            Simplified 4-Step Clinical Execution
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${st.steps.map((step, idx) => `
+                                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-navy text-gold font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+                                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${step}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Critical Safety Checkpoints -->
+                    <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-5">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 flex items-center gap-2 mb-2.5">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+                            Critical Examiner Safety Checkpoints (Non-Negotiables)
+                        </h4>
+                        <ul class="space-y-2">
+                            ${st.safetyCheckpoints.map(pt => `
+                                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-amber-950">
+                                    <i class="fa-solid fa-shield-check text-amber-600 mt-1"></i>
+                                    <span>${pt}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Verbatim Communication Script -->
+                    <div class="bg-teal-soft/70 border border-teal/25 rounded-2xl p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xs font-extrabold uppercase tracking-wider text-teal-dark flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-teal"></i>
+                                Sample Verbatim Examiner-Ready Script
+                            </h4>
+                            <button onclick="copyScriptText()" id="copy-script-btn" class="text-xs font-bold text-teal-dark hover:text-navy flex items-center gap-1 bg-white px-2.5 py-1 rounded-lg border border-teal/20 shadow-sm transition">
+                                <i class="fa-regular fa-copy"></i> <span>Copy Script</span>
+                            </button>
+                        </div>
+                        <p id="active-station-script" class="text-xs sm:text-sm text-navy font-medium italic leading-relaxed">
+                            ${st.script}
+                        </p>
+                    </div>
+
+                    <!-- Bottom CTA Bar inside Preview -->
+                    <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-xs text-slate-500">
+                            Showing simplified preview for <strong>${st.code}</strong>. Full guide includes complete marking rubrics &amp; sample charts.
+                        </div>
+                        <button onclick="openModal('AHPRA RN OSCE 10 Station Simplified Guide ($79 AUD)')" class="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-navy hover:bg-teal transition shrink-0">
+                            Unlock All 10 Full Station Guides <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectStation(id) {
+            activeStationId = id;
+            renderStationTabs();
+            renderStationDetail();
+        }
+
+        function copyScriptText() {
+            const st = osceStations.find(item => item.id === activeStationId);
+            const tempInput = document.createElement('textarea');
+            tempInput.value = st.script;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const btn = document.getElementById('copy-script-btn');
+            if (btn) {
+                btn.innerHTML = '<i class="fa-solid fa-check text-teal"></i> <span>Copied!</span>';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Copy Script</span>';
+                }, 2000);
+            }
+        }
+
+        /* =========================================================================
+           2. INTERACTIVE OSCE STATION TIMER (2-MIN READING + 8-MIN CLINICAL)
+           ========================================================================= */
+        let currentPhase = 'reading'; // 'reading' (120s) or 'clinical' (480s)
+        let totalSeconds = 120;
+        let remainingSeconds = 120;
+        let timerInterval = null;
+        let isRunning = false;
+
+        function playBellSound() {
+            try {
+                if (typeof Tone !== 'undefined') {
+                    Tone.start();
+                    const synth = new Tone.Synth({
+                        oscillator: { type: 'sine' },
+                        envelope: { attack: 0.01, decay: 0.3, sustain: 0.1, release: 0.6 }
+                    }).toDestination();
+                    synth.triggerAttackRelease('A5', '8n');
+                }
+            } catch (e) {
+                // Silent fallback if audio context is restricted
+            }
+        }
+
+        function formatTime(sec) {
+            const mins = Math.floor(sec / 60);
+            const secs = sec % 60;
+            return `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
+        }
+
+        function updateTimerUI() {
+            document.getElementById('timer-display').textContent = formatTime(remainingSeconds);
+            const pct = Math.max(0, (remainingSeconds / totalSeconds) * 100);
+            document.getElementById('timer-progress').style.width = `${pct}%`;
+
+            const tipEl = document.getElementById('timer-pacing-tip');
+            if (currentPhase === 'reading') {
+                if (remainingSeconds > 60) {
+                    tipEl.textContent = "Reading Minute 1: Identify patient name, age, presenting complaint, and abnormal vitals.";
+                } else if (remainingSeconds > 0) {
+                    tipEl.textContent = "Reading Minute 2: Mentally rehearse your 6 safety checkpoints and required chart.";
+                } else {
+                    tipEl.textContent = "Reading time complete! Enter the station and begin Hand Hygiene immediately.";
+                }
+            } else {
+                if (remainingSeconds > 390) {
+                    tipEl.textContent = "0:00–1:30 Phase: Scene safety, Hand Hygiene, 3-Point ID, Allergy check & Informed Consent.";
+                } else if (remainingSeconds > 150) {
+                    tipEl.textContent = "1:30–5:30 Phase: Execute core clinical procedure/assessment & communicate empathetically.";
+                } else if (remainingSeconds > 60) {
+                    tipEl.textContent = "5:30–7:00 Phase: Complete ADDS / NIMC / Fluid Balance documentation legibly.";
+                } else if (remainingSeconds > 0) {
+                    tipEl.textContent = "Final 60 Seconds Warning! Bed low, call bell in reach, final hand hygiene & ISBAR escalation.";
+                } else {
+                    tipEl.textContent = "8-Minute Station Complete! Please stop writing and move to the next station.";
+                }
+            }
+        }
+
+        function setTimerPhase(phase) {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            isRunning = false;
+            currentPhase = phase;
+            totalSeconds = phase === 'reading' ? 120 : 480;
+            remainingSeconds = totalSeconds;
+
+            // Update phase button styles
+            const readBtn = document.getElementById('phase-reading-btn');
+            const clinBtn = document.getElementById('phase-clinical-btn');
+            const badge = document.getElementById('timer-status-badge');
+
+            if (phase === 'reading') {
+                readBtn.className = "flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition bg-gold text-navy-dark shadow";
+                clinBtn.className = "flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white";
+                badge.textContent = "Ready: 2-Minute Reading Time";
+            } else {
+                clinBtn.className = "flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition bg-gold text-navy-dark shadow";
+                readBtn.className = "flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white";
+                badge.textContent = "Ready: 8-Minute Clinical Station";
+            }
+
+            document.getElementById('timer-play-icon').className = "fa-solid fa-play";
+            document.getElementById('timer-play-text').textContent = "Start Timer";
+            updateTimerUI();
+        }
+
+        function toggleTimer() {
+            const badge = document.getElementById('timer-status-badge');
+            if (isRunning) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                isRunning = false;
+                document.getElementById('timer-play-icon').className = "fa-solid fa-play";
+                document.getElementById('timer-play-text').textContent = "Resume Timer";
+                badge.textContent = "Paused";
+            } else {
+                if (remainingSeconds <= 0) {
+                    remainingSeconds = totalSeconds;
+                }
+                playBellSound();
+                isRunning = true;
+                document.getElementById('timer-play-icon').className = "fa-solid fa-pause";
+                document.getElementById('timer-play-text').textContent = "Pause Timer";
+                badge.textContent = currentPhase === 'reading' ? "In Progress: 2-Min Reading Phase" : "In Progress: 8-Min Clinical Performance";
+
+                timerInterval = setInterval(() => {
+                    if (remainingSeconds > 0) {
+                        remainingSeconds--;
+                        // 1-minute warning chime for 8-minute station
+                        if (currentPhase === 'clinical' && remainingSeconds === 60) {
+                            playBellSound();
+                        }
+                        updateTimerUI();
+                    } else {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        isRunning = false;
+                        playBellSound();
+                        document.getElementById('timer-play-icon').className = "fa-solid fa-rotate-right";
+                        document.getElementById('timer-play-text').textContent = "Restart Phase";
+                        badge.textContent = "Time Up! Buzzer Sounded";
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            setTimerPhase(currentPhase);
+        }
+
+        function updateChecklistScore() {
+            const checks = document.querySelectorAll('.safety-check');
+            let checkedCount = 0;
+            checks.forEach(c => { if (c.checked) checkedCount++; });
+
+            document.getElementById('checklist-score').textContent = `${checkedCount}/6`;
+            const feedback = document.getElementById('checklist-feedback');
+            if (checkedCount === 6) {
+                feedback.innerHTML = `<span class="text-teal-light font-bold"><i class="fa-solid fa-circle-check mr-1"></i> 100% Universal Safety Bundle Completed! Examiner green-light achieved.</span><button onclick="resetChecklist()" class="text-gold hover:underline font-bold shrink-0 ml-3">Reset</button>`;
+            } else {
+                feedback.innerHTML = `<span>Complete all 6 safety steps within the first 90 seconds &amp; final 60 seconds of your station.</span><button onclick="resetChecklist()" class="text-gold hover:underline font-bold shrink-0 ml-3">Clear Checks</button>`;
+            }
+        }
+
+        function resetChecklist() {
+            document.querySelectorAll('.safety-check').forEach(c => c.checked = false);
+            updateChecklistScore();
+        }
+
+        /* =========================================================================
+           3. FAQ ACCORDION, MOBILE MENU & MODAL INTERACTIONS
+           ========================================================================= */
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        function openModal(selectedProgram) {
+            const modal = document.getElementById('enrollment-modal');
+            const select = document.getElementById('modal-program-select');
+            document.getElementById('modal-form-container').classList.remove('hidden');
+            document.getElementById('modal-success-container').classList.add('hidden');
+
+            if (selectedProgram) {
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value === selectedProgram) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('enrollment-modal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const chosen = document.getElementById('modal-program-select').value;
+            document.getElementById('modal-form-container').classList.add('hidden');
+            document.getElementById('modal-success-container').classList.remove('hidden');
+            document.getElementById('modal-success-text').innerHTML = `Thank you for choosing <strong>${chosen}</strong>! Our NextGen Nurse Educators have sent your confirmation and immediate study access instructions to your email.`;
+        }
+
+        function openSampleChapterModal() {
+            document.getElementById('sample-modal').classList.remove('hidden');
+        }
+
+        function closeSampleModal() {
+            document.getElementById('sample-modal').classList.add('hidden');
+        }
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderStationTabs();
+            renderStationDetail();
+            updateTimerUI();
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileIcon = document.getElementById('mobile-menu-icon');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileIcon.className = 'fa-solid fa-bars text-xl';
+                } else {
+                    mobileIcon.className = 'fa-solid fa-xmark text-xl';
+                }
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileIcon.className = 'fa-solid fa-bars text-xl';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
